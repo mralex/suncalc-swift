@@ -19,14 +19,14 @@ class SunUtils {
 	}
 	
 	class func getEclipticLongitudeM(M:Double) -> Double {
-		var C:Double = SunUtils.getEquationOfCenter(M)
-		var P:Double = Constants.RAD() * 102.9372 // perihelion of the Earth
+		let C:Double = SunUtils.getEquationOfCenter(M)
+		let P:Double = Constants.RAD() * 102.9372 // perihelion of the Earth
 		return M + C + P + Constants.PI()
 	}
 	
 	class func getSunCoords(d:Double) -> EquatorialCoordinates {
-		var M:Double = SunUtils.getSolarMeanAnomaly(d)
-		var L:Double = SunUtils.getEclipticLongitudeM(M)
+		let M:Double = SunUtils.getSolarMeanAnomaly(d)
+		let L:Double = SunUtils.getEclipticLongitudeM(M)
 		
 		return EquatorialCoordinates(rightAscension: PositionUtils.getRightAscensionL(L, b: 0), declination: PositionUtils.getDeclinationL(L, b: 0))
 	}
