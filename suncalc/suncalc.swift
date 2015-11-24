@@ -26,6 +26,8 @@ class SunCalc {
 	var nightEnd:NSDate
 	var nauticalDawn:NSDate
 	var dawn:NSDate
+	var blueHourEnd:NSDate
+	var blueHour:NSDate
 	
 	class func getSetJ(h:Double, phi:Double, dec:Double, lw:Double, n:Double, M:Double, L:Double) -> Double {
 		let w:Double = TimeUtils.getHourAngleH(h, phi: phi, d: dec)
@@ -145,6 +147,12 @@ class SunCalc {
 		Jrise = Jnoon - (Jset - Jnoon)
 		self.goldenHourEnd = DateUtils.fromJulian(Jrise)
 		self.goldenHour = DateUtils.fromJulian(Jset)
+		
+		h = -4;
+		Jset = SunCalc.getSetJ(h * Constants.RAD(), phi: phi, dec: dec, lw: lw, n: n, M: M, L: L)
+		Jrise = Jnoon - (Jset - Jnoon)
+		self.blueHourEnd = DateUtils.fromJulian(Jrise)
+		self.blueHour = DateUtils.fromJulian(Jset)
 
 	}
 }
