@@ -14,13 +14,13 @@ class ViewController: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		let date:NSDate = NSDate()
+		let date:Date = Date()
 		let sunCalc:SunCalc = SunCalc.getTimes(date, latitude: 51.5, longitude: -0.1)
 		
-		var formatter:NSDateFormatter = NSDateFormatter()
+		let formatter:DateFormatter = DateFormatter()
 		formatter.dateFormat = "HH:mm"
-		formatter.timeZone = NSTimeZone(abbreviation: "GMT")
-		var sunriseString:String = formatter.stringFromDate(sunCalc.sunrise)
+		formatter.timeZone = TimeZone(abbreviation: "GMT")
+		let sunriseString:String = formatter.string(from: sunCalc.sunrise)
 		timeLabel.text = sunriseString
 	}
 
