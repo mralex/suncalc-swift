@@ -18,7 +18,7 @@ class suncalc_exampleTests: XCTestCase {
 	
 	override func setUp() {
 		super.setUp()
-		var calendar:Calendar = Calendar(identifier: NSGregorianCalendar)!
+		var calendar:Calendar = Calendar(identifier: Calendar.Identifier.gregorian)
 		calendar.timeZone = TimeZone(abbreviation: "GMT")!
 		var components:DateComponents = DateComponents()
 		components.year = 2013
@@ -57,13 +57,16 @@ class suncalc_exampleTests: XCTestCase {
 	
 	func test_sun_getPosition() {
 		let sunPos:SunPosition = SunCalc.getSunPosition(date, latitude: LAT, longitude: LNG)
-		XCTAssertEqualWithAccuracy(sunPos.azimuth, -2.5003175907168385, accuracy: NEARNESS)
+        XCTAssertEqualWithAccuracy(sunPos.azimuth, 0.6412750628729547, accuracy: NEARNESS)
+
+
 		XCTAssertEqualWithAccuracy(sunPos.altitude, -0.7000406838781611, accuracy: NEARNESS)
 	}
 	
 	func test_getMoonPosition() {
 		let moonPos:MoonPosition = SunCalc.getMoonPosition(date, latitude: LAT, longitude: LNG)
-		XCTAssertEqualWithAccuracy(moonPos.azimuth, -0.9783999522438226, accuracy: NEARNESS)
+        XCTAssertEqualWithAccuracy(moonPos.azimuth, 2.1631927013459706, accuracy: NEARNESS)
+
 		XCTAssertEqualWithAccuracy(moonPos.altitude, 0.006969727754891917, accuracy: NEARNESS)
 		XCTAssertEqualWithAccuracy(moonPos.distance, 364121.37256256294, accuracy: NEARNESS)
 	}
