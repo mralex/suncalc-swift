@@ -13,10 +13,10 @@ open class SunPosition {
 	open var altitude:Double
     open var date: Date = Date()
     
-    open var azimuthDec:Double {
+    open var azimuthDegree:Double {
         return azimuth * 180 / .pi
     }
-    open var altitudeDec:Double {
+    open var altitudeDegree:Double {
         return altitude * 180 / .pi
     }
 	
