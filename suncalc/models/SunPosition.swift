@@ -9,10 +9,18 @@
 import Foundation
 
 open class SunPosition {
-	var azimuth:Double
-	var altitude:Double
+	open var azimuth:Double
+	open var altitude:Double
+    open var date: Date = Date()
+    
+    open var azimuthDec:Double {
+        return azimuth * 180 / .pi
+    }
+    open var altitudeDec:Double {
+        return altitude * 180 / .pi
+    }
 	
-	init(azimuth:Double, altitude:Double) {
+    init(azimuth:Double, altitude:Double) {
 		self.azimuth = azimuth
 		self.altitude = altitude
 	}

@@ -29,18 +29,18 @@ open class SunCalc {
 	var blueHourEnd:Date
 	var blueHour:Date
 	
-	class func getSetJ(_ h:Double, phi:Double, dec:Double, lw:Double, n:Double, M:Double, L:Double) -> Double {
+	open class func getSetJ(_ h:Double, phi:Double, dec:Double, lw:Double, n:Double, M:Double, L:Double) -> Double {
 		let w:Double = TimeUtils.getHourAngleH(h, phi: phi, d: dec)
 		let a:Double = TimeUtils.getApproxTransitHt(w, lw: lw, n: n)
 		
 		return TimeUtils.getSolarTransitJDs(a, M: M, L: L)
 	}
 	
-	class func getTimes(_ date:Date, latitude:Double, longitude:Double) -> SunCalc {
+	open class func getTimes(_ date:Date, latitude:Double, longitude:Double) -> SunCalc {
 		return SunCalc(date:date, latitude:latitude, longitude:longitude)
 	}
 	
-	class func getSunPosition(_ timeAndDate:Date, latitude:Double, longitude:Double) -> SunPosition {
+	open class func getSunPosition(_ timeAndDate:Date, latitude:Double, longitude:Double) -> SunPosition {
 		let lw:Double = Constants.RAD() * -longitude
 		let phi:Double = Constants.RAD() * latitude
 		let d:Double = DateUtils.toDays(timeAndDate)
@@ -51,7 +51,7 @@ open class SunCalc {
 		return SunPosition(azimuth: PositionUtils.getAzimuthH(H, phi: phi, dec: c.declination), altitude: PositionUtils.getAltitudeH(H, phi: phi, dec: c.declination))
 	}
 	
-	class func getMoonPosition(_ timeAndDate:Date, latitude:Double, longitude:Double) -> MoonPosition {
+	open class func getMoonPosition(_ timeAndDate:Date, latitude:Double, longitude:Double) -> MoonPosition {
 		let lw:Double = Constants.RAD() * -longitude
 		let phi:Double = Constants.RAD() * latitude
 		let d:Double = DateUtils.toDays(timeAndDate)
@@ -66,7 +66,7 @@ open class SunCalc {
 		return MoonPosition(azimuth: PositionUtils.getAzimuthH(H, phi: phi, dec: c.declination), altitude: h, distance: c.distance)
 	}
 	
-	class func getMoonIllumination(_ timeAndDate:Date) -> MoonIllumination {
+	open class func getMoonIllumination(_ timeAndDate:Date) -> MoonIllumination {
 		let d:Double = DateUtils.toDays(timeAndDate)
 		let s:EquatorialCoordinates = SunUtils.getSunCoords(d)
 		let m:GeocentricCoordinates = MoonUtils.getMoonCoords(d)

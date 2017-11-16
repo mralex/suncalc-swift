@@ -9,8 +9,8 @@
 import Foundation
 
 open class EquatorialCoordinates {
-	var rightAscension:Double
-	var declination:Double
+	open var rightAscension:Double
+	open var declination:Double
 	
 	init(rightAscension:Double, declination:Double) {
 		self.rightAscension = rightAscension

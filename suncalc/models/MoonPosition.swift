@@ -9,11 +9,11 @@
 import Foundation
 
 open class MoonPosition {
-	var azimuth:Double
-	var altitude:Double
-	var distance:Double
+	open var azimuth:Double
+	open var altitude:Double
+	open var distance:Double
 	
-	init(azimuth:Double, altitude:Double, distance:Double) {
+    init(azimuth:Double, altitude:Double, distance:Double) {
 		self.azimuth = azimuth
 		self.altitude = altitude
 		self.distance = distance

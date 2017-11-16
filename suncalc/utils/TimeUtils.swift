@@ -10,7 +10,7 @@ import Foundation
 
 let J0:Double = 0.0009
 
-open class TimeUtils {
+class TimeUtils {
 	
 	class func getJulianCycleD(_ d:Double, lw:Double) -> Double {
 		return round(d - J0 - lw / (2 * Constants.PI()))

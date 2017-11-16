@@ -9,9 +9,9 @@
 import Foundation
 
 open class GeocentricCoordinates {
-	var rightAscension:Double;
-	var declination:Double;
-	var distance:Double;
+	open var rightAscension:Double;
+	open var declination:Double;
+	open var distance:Double;
 	
 	init(rightAscension:Double, declination:Double, distance:Double) {
 		self.rightAscension = rightAscension

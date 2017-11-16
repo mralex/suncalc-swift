@@ -9,11 +9,11 @@
 import Foundation
 
 open class MoonIllumination {
-	var fraction:Double
-	var phase:Double
-	var angle:Double
+	open var fraction:Double
+	open var phase:Double
+	open var angle:Double
 	
-	init(fraction:Double, phase:Double, angle:Double) {
+	open init(fraction:Double, phase:Double, angle:Double) {
 		self.fraction = fraction
 		self.phase = phase
 		self.angle = angle

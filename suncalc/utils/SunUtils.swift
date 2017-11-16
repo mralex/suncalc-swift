@@ -8,7 +8,7 @@
 
 import Foundation
 
-open class SunUtils {
+class SunUtils {
 	
 	class func getSolarMeanAnomaly(_ d:Double) -> Double {
 		return Constants.RAD() * (357.5291 + 0.98560028 * d)
