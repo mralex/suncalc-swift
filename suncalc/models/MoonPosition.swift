@@ -8,7 +8,7 @@
 
 import Foundation
 
-class MoonPosition {
+open class MoonPosition {
 	var azimuth:Double
 	var altitude:Double
 	var distance:Double

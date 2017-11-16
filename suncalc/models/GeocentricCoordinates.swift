@@ -8,7 +8,7 @@
 
 import Foundation
 
-class GeocentricCoordinates {
+open class GeocentricCoordinates {
 	var rightAscension:Double;
 	var declination:Double;
 	var distance:Double;

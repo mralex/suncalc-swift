@@ -8,7 +8,7 @@
 
 import Foundation
 
-class SunPosition {
+open class SunPosition {
 	var azimuth:Double
 	var altitude:Double
 	

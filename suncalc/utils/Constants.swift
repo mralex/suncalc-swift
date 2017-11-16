@@ -10,7 +10,7 @@ import Foundation
 
 let π = 3.14159265358979
 
-class Constants {
+open class Constants {
 	
 	class func RAD() -> Double {
 		return π / 180.0

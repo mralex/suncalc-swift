@@ -8,7 +8,7 @@
 
 import Foundation
 
-class PositionUtils {
+open class PositionUtils {
 	
 	class func getRightAscensionL(_ l:Double, b:Double) -> Double {
 		return atan2(sin(l) * cos(Constants.E()) - tan(b) * sin(Constants.E()), cos(l))

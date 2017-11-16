@@ -8,7 +8,7 @@
 
 import Foundation
 
-class MoonIllumination {
+open class MoonIllumination {
 	var fraction:Double
 	var phase:Double
 	var angle:Double

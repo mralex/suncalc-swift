@@ -8,7 +8,7 @@
 
 import Foundation
 
-class EquatorialCoordinates {
+open class EquatorialCoordinates {
 	var rightAscension:Double
 	var declination:Double
 	

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class MoonUtils {
+open class MoonUtils {
 	
 	class func getMoonCoords(_ d:Double) -> GeocentricCoordinates {
 		// geocentric ecliptic coordinates of the moon

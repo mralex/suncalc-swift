@@ -9,7 +9,7 @@
 
 import Foundation
 
-class SunCalc {
+open class SunCalc {
 	let J0:Double = 0.0009
 	
 	var sunrise:Date

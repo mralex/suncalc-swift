@@ -13,7 +13,7 @@ let DAY_SECONDS:Double = 60 * 60 * 24
 let J1970:Double = 2440588
 let J2000:Double = 2451545
 
-class DateUtils {
+open class DateUtils {
 	
 	class func toJulian(_ date:Date) -> Double {
 		return Double(date.timeIntervalSince1970) / DAY_SECONDS - 0.5 + J1970
