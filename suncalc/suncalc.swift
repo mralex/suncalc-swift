@@ -83,7 +83,7 @@ open class SunCalc {
 		return MoonIllumination(fraction: fraction, phase: phase, angle: angle)
 	}
 
-	open init(date:Date, latitude:Double, longitude:Double) {
+	public init(date:Date, latitude:Double, longitude:Double) {
 		let lw:Double = Constants.RAD() * -longitude
 		let phi:Double = Constants.RAD() * latitude
 		let d:Double = DateUtils.toDays(date)
