@@ -14,16 +14,21 @@ let J1970:Double = 2440588
 let J2000:Double = 2451545
 
 class DateUtils {
-	
+
 	class func toJulian(_ date:Date) -> Double {
 		return Double(date.timeIntervalSince1970) / DAY_SECONDS - 0.5 + J1970
 	}
-	
+
+	class func hoursLater(_ date:Date, hours:Double) -> Date {
+		let calendar = Calendar.current
+		return calendar.date(byAdding: .hour, value: hours, to: date)
+	}
+
 	class func fromJulian(_ j:Double) -> Date {
 		let timeInterval = (j + 0.5 - J1970) * DAY_SECONDS
 		return Date(timeIntervalSince1970: timeInterval)
 	}
-	
+
 	class func toDays(_ date:Date) -> Double {
 		return DateUtils.toJulian(date) - J2000
 	}

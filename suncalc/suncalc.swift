@@ -83,6 +83,65 @@ open class SunCalc {
 		return MoonIllumination(fraction: fraction, phase: phase, angle: angle)
 	}
 
+	// calculations for moon rise/set times are based on http://www.stargazing.net/kepler/moonrise.html article
+
+	open func getMoonTimes(_ timeAndDate:Date, latitude:Double, longitude:Double) -> MoonTimes {
+		let t = Calendar.current.startOfDay(for: timeAndDate)
+
+		let hc:Double = 0.133 * Constants.RAD()
+
+		var hc = 0.133 * rad
+    var h0 = SunCalc.getMoonPosition(t, latitude, longitude).altitude - hc,
+        h1:Double, h2:Double, moonrise:Double, moonset:Double, a:Double, b:Double, xe:Double, ye:Double, d:Double, roots:Double, x1:Double, x2:Double, dx:Double
+
+		for i in stride(from: 1, to: 24, by: 2) {
+			h1 = SunCalc.getMoonPosition(DateUtils.hoursLater(t, i), latitude, longitude).altitude - hc
+			h2 = SunCalc.getMoonPosition(DateUtils.hoursLater(t, i + 1), latitude, longitude).altitude - hc
+
+			a = (h0 + h2) / 2 - h1
+			b = (h2 - h0) / 2
+			xe = -b / (2 * a)
+			ye = (a * xe + b) * xe + h1
+			d = b * b - 4 * a * h1
+			roots = 0
+
+			if (d >= 0) {
+					dx = sqrt(d) / (abs(a) * 2)
+					x1 = xe - dx
+					x2 = xe + dx
+					if (abs(x1) <= 1) roots += 1
+					if (abs(x2) <= 1) roots += 1
+					if (x1 < -1) x1 = x2
+
+					if (roots === 1) {
+	            if (h0 < 0) moonrise = i + x1
+	            else moonset = i + x1
+
+	        } else if (roots === 2) {
+	            moonrise = i + (ye < 0 ? x2 : x1)
+	            moonset = i + (ye < 0 ? x1 : x2)
+	        }
+
+	        if (rise && set) break
+
+	        h0 = h2
+			}
+
+			var alwaysUp = false
+			var alwaysDown = false
+
+			if (!moonrise && !moonset) {
+				if ye > 0 {
+					alwaysUp = true
+				} else {
+					alwaysDown = true
+				}
+			}
+
+			return MoonTimes(DateUtils.hoursLater(t, moonrise), DateUtils.hoursLater(t, moonset), alwaysUp, alwaysDown)
+		}
+	}
+
 	public init(date:Date, latitude:Double, longitude:Double) {
 		let lw:Double = Constants.RAD() * -longitude
 		let phi:Double = Constants.RAD() * latitude

@@ -12,11 +12,11 @@ open class MoonIllumination {
 	open var fraction:Double
 	open var phase:Double
 	open var angle:Double
-	
-    init(fraction:Double, phase:Double, angle:Double) {
+
+  init(fraction:Double, phase:Double, angle:Double) {
 		self.fraction = fraction
 		self.phase = phase
 		self.angle = angle
 	}
-	
+
 }
