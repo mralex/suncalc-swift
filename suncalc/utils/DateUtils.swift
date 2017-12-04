@@ -19,9 +19,9 @@ class DateUtils {
 		return Double(date.timeIntervalSince1970) / DAY_SECONDS - 0.5 + J1970
 	}
 
-	class func hoursLater(_ date:Date, hours:Double) -> Date {
+	class func hoursLater(_ date:Date, hours:Int) -> Date {
 		let calendar = Calendar.current
-		return calendar.date(byAdding: .hour, value: hours, to: date)
+		return calendar.date(byAdding: .hour, value: hours, to: date)!
 	}
 
 	class func fromJulian(_ j:Double) -> Date {
